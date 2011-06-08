@@ -1,11 +1,13 @@
 SampleApp::Application.routes.draw do
-  get "pages/home"
 
-  get "pages/contact"
+        get "users/new" #What is the point of this? Routes work w/o it...
 
-  get "pages/about"
+	match '/contact' => 'pages#contact'
+	match '/about' => 'pages#about'
+	match '/help' => 'pages#help'
+	match '/signup' => 'users#new'
 
-  get "pages/help" 
+	root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
