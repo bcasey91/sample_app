@@ -1,6 +1,5 @@
 SampleApp::Application.routes.draw do
-
-        get "users/new" #What is the point of this? Routes work w/o it...
+  resources :users
 
 	match '/contact' => 'pages#contact'
 	match '/about' => 'pages#about'
