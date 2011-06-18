@@ -36,6 +36,7 @@ describe UsersController do
       response.should have_selector("h1>img", :class => "gravatar")
     end
   end
+
 #Following for demonstration/ illustration of what's happening- the assigns is
 # responding to the get- so it's grabbing the user instance when the User.find 
 # is called in the show action with the :id => x is used. The get is going into # the show action and making @user equal to x(due to stuff in show action), and
@@ -84,30 +85,35 @@ describe UsersController do
         post :create, :user => @attr
         response.should render_template('new')
       end
-    end
-   
+
     describe "success" do
-      
+
       before(:each) do
-        @attr = { :name => "Brendan F.F.", :email => "BFC@example.net",
-                  :password => "foobar, :password_confirmation => "foobar" }
+        @attr = { :name => "New User", :email => "user@example.com",
+                  :password => "foobar", :password_confirmation => "foobar" }
       end
-      
+
       it "should create a user" do
         lambda do
           post :create, :user => @attr
         end.should change(User, :count).by(1)
       end
-     
+
       it "should redirect to the user show page" do
         post :create, :user => @attr
         response.should redirect_to(user_path(assigns(:user)))
-      end
-      
+      end    
+
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
+        flash[:success].should =~ /welcome to the/i
+      end
+   
+      it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_signed_in
       end
     end
   end
+end
 end
