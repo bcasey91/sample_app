@@ -128,6 +128,15 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
+/* User index*/
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
 div.field, div.actions {
   margin-bottom: 10px;
 }
