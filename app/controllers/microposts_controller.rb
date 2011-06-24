@@ -13,6 +13,12 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @microposts = @user.microposts
+    @title = "Suck it #{@user.name}"
+  end
+
   def destroy
     @micropost.destroy
     redirect_back_or root_path

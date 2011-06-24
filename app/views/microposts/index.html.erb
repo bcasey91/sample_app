@@ -1,0 +1,12 @@
+<table class = "profile">
+  <tr>
+    <td class = "main">
+    
+      <% unless @user.microposts.empty? %>
+        <table class = "microposts" summary ="User microposts index">
+          <%= render @microposts %>
+        </table>
+      <% end %>
+    </td>
+  </tr>
+</table>

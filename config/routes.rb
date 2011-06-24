@@ -5,7 +5,9 @@ SampleApp::Application.routes.draw do
 
   get "sessions/destroy"
 
-  resources :users
+  resources :users do
+    resources :microposts, :only => [:index]
+  end
 
   resources :sessions, :only => [:new, :create, :destroy] 
 
