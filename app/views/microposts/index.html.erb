@@ -2,10 +2,12 @@
   <tr>
     <td class = "main">
     
-      <% unless @user.microposts.empty? %>
+      <% if !(@user.microposts.empty?) %>
         <table class = "microposts" summary ="User microposts index">
           <%= render @microposts %>
         </table>
+      <%else%>
+        <%= @user.name %> has nothing to say... better get posting.
       <% end %>
     </td>
   </tr>

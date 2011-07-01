@@ -1,10 +1,8 @@
 <li>
   <%= gravatar_for user, :size => 30 %>
-  <% if current_user == user %>
-    <%= link_to "It's me, bitch", user %>
-  <% else %>
-    <%= link_to user.name, user %>
-  <% end %>
+
+  <%= link_to user.name, user %>
+
   <%#Following is for delete link, only for admin users that are NOT the current
      user. You don't want to delete yourself. %>
   <% if current_user.admin? && current_user != user%>
